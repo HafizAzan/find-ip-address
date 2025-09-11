@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import { ROUTES } from "../utils/constant";
 
 function Header() {
+  const baseUrl =
+    "https://ip-location-xmwsqnfps-hafizazans-projects.vercel.app";
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,9 +34,7 @@ function Header() {
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        const res = await fetch(
-          "https://ip-location-75qio8oqn-hafizazans-projects.vercel.app/api/getUserLocation"
-        );
+        const res = await fetch(`${baseUrl}/api/getUserLocation`);
         const data = await res.json();
 
         if (res.ok) {
@@ -51,9 +51,7 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    fetch(
-      "https://ip-location-75qio8oqn-hafizazans-projects.vercel.app/api/user-ip-location"
-    )
+    fetch(`${baseUrl}/api/user-ip-location`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -67,7 +65,7 @@ function Header() {
       <main className="sub-header">
         <div className="img-wrapper">
           <Link to={ROUTES?.HOME}>
-            <img src="/public/images/logo.png" />
+            <img src="/images/logo.png" />
           </Link>
         </div>
 
